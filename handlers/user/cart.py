@@ -161,7 +161,7 @@ async def process_name(message: Message, state: FSMContext):
 
         data['name'] = message.text
 
-        if 'address' in data.keys():
+        if 'phone' in data.keys():
 
             await confirm(message)
             await CheckoutState.confirm.set()
@@ -249,12 +249,12 @@ async def process_confirm(message: Message, state: FSMContext):
                         for idx, quantity in db.fetchall('''SELECT idx, quantity FROM cart
             WHERE cid=?''', (cid,))]  # idx=quantity
 
-            db.query('INSERT INTO orders VALUES (?, ?, ?, ?)',
-                     (cid, data['name'], data['address'], data[phone],' '.join(products)))
+            db.query('INSERT INTO orders VALUES (?, ?, ?, ?, ?)',
+                     (cid, data['name'], data['address'],' '.join(products), data['phone']))
 
             db.query('DELETE FROM cart WHERE cid=?', (cid,))
 
-            await message.answer('Ок! Ваш заказ уже в пути 🚀\nИмя: <b>' + data['name'] + '</b>\nАдрес: <b>' + data['address'] + '</b>\nTelefon raqami: <b>' + data['phone'],
+            await message.answer('Ок! Ваш заказ уже в пути 🚀\nИмя: <b>' + data['name'] + '</b>\nАдрес: <b>' + data['address'],
                                  reply_markup=markup)
     else:
 
