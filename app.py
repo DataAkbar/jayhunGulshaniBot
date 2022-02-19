@@ -32,9 +32,9 @@ async def cmd_start(message: types.Message):
 💰 Hisobingizni Uzcard, Humo, Yandex.kassa, Sberbank yoki Qiwi orqali to'ldirishingiz mumkin.
 
 ❓ Savollaringiz bormi? Muammo emas! /sos buyrug'i sizga administratorlar bilan bog'lanishga yordam beradi.
-
-🤝 Shunga o'xshash bot sizga ham kerakmi? Dasturchiga murojaat qiling <a href="https://t.me/satipoff">Satipoff</a>, u tishlamaydi)))
     ''')
+
+    await message.answer(''' 👉👉/menu 👈👈 ''')
 
 
 @dp.message_handler(text=user_message)
