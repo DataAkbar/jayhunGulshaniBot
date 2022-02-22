@@ -1,7 +1,9 @@
 
+from asyncore import dispatcher
 import os
 import handlers
 from aiogram import executor, types
+from utils.set_bot_command import set_default_commands
 from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove
 from data import config
 from loader import dp, db, bot
@@ -61,6 +63,7 @@ async def on_startup(dp):
 
     await bot.delete_webhook()
     await bot.set_webhook(config.WEBHOOK_URL)
+    await set_default_commands(dp)
 
 
 async def on_shutdown():

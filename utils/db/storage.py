@@ -10,7 +10,7 @@ class DatabaseManager(object):
 
     def create_tables(self):
         self.query('CREATE TABLE IF NOT EXISTS products (idx text, title text, body text, photo blob, price int, tag text)')
-        self.query('CREATE TABLE IF NOT EXISTS orders (cid int, usr_name text, usr_address text, products text, phone int)')
+        self.query('CREATE TABLE IF NOT EXISTS orders (cid int, usr_name text, usr_address text, usr_phone int, products text)')
         self.query('CREATE TABLE IF NOT EXISTS cart (cid int, idx text, quantity int)')
         self.query('CREATE TABLE IF NOT EXISTS categories (idx text, title text)')
         self.query('CREATE TABLE IF NOT EXISTS wallet (cid int, balance real)')
@@ -45,7 +45,7 @@ class DatabaseManager(object):
 
 products: idx text, title text, body text, photo blob, price int, tag text
 
-orders: cid int, usr_name text, usr_address text, products text, phone int, tele int
+orders: cid int, usr_name text, usr_address text, usr_phone int, products text
 
 cart: cid int, idx text, quantity int ==> product_idx
 
